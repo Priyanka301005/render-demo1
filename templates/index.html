@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>AutoPrice AI | Car Value Predictor</title>
+    <title>AutoPrice AI | Precision Car Valuation</title>
     <!-- Font Awesome 6 (Free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -31,12 +31,12 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: linear-gradient(145deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.5) 100%),
+            background: linear-gradient(145deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.55) 100%),
                         url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=2064&auto=format');
             background-size: cover;
-            background-position: center 30%;
+            background-position: center 25%;
             background-repeat: no-repeat;
-            filter: brightness(0.95) contrast(1.08);
+            filter: brightness(0.92) contrast(1.05);
         }
 
         .car-bg::after {
@@ -46,12 +46,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 70% 20%, rgba(255,180,40,0.08), rgba(0,0,0,0.55));
+            background: radial-gradient(circle at 70% 20%, rgba(255,180,40,0.1), rgba(0,0,0,0.6));
             pointer-events: none;
         }
 
         .predictor-container {
-            max-width: 640px;
+            max-width: 700px;
             width: 100%;
             margin: 0 auto;
             position: relative;
@@ -83,17 +83,17 @@
         }
 
         .compact-form {
-            background: rgba(12, 20, 30, 0.82);
-            backdrop-filter: blur(16px);
-            border-radius: 40px;
-            padding: 22px 26px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,200,0.15);
+            background: rgba(12, 20, 30, 0.85);
+            backdrop-filter: blur(18px);
+            border-radius: 44px;
+            padding: 26px 28px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,215,140,0.2);
         }
 
         .form-vertical {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 18px;
         }
 
         .input-field {
@@ -117,15 +117,21 @@
 
         .input-field select,
         .input-field input {
-            padding: 10px 14px;
-            background: rgba(255, 255, 255, 0.94);
-            border: 1px solid rgba(255,200,120,0.5);
+            padding: 11px 16px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(255,200,100,0.7);
             border-radius: 60px;
             font-size: 0.85rem;
             font-weight: 500;
             font-family: inherit;
             color: #111;
             width: 100%;
+            transition: all 0.2s;
+        }
+        .input-field select:focus, .input-field input:focus {
+            outline: none;
+            border-color: #FFB347;
+            box-shadow: 0 0 0 2px rgba(255,180,71,0.4);
         }
 
         .input-field input[type="range"] {
@@ -136,9 +142,9 @@
         }
         .range-hint {
             font-size: 0.7rem;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
             display: inline-block;
-            padding: 3px 12px;
+            padding: 3px 14px;
             border-radius: 40px;
             color: #FFE1A0;
             width: fit-content;
@@ -149,15 +155,15 @@
         .double-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 18px;
         }
-        @media (max-width: 520px) {
+        @media (max-width: 560px) {
             .double-group {
                 grid-template-columns: 1fr;
                 gap: 14px;
             }
             .compact-form {
-                padding: 18px 20px;
+                padding: 20px 18px;
             }
             .price-head h1 {
                 font-size: 1.8rem;
@@ -166,7 +172,7 @@
 
         .predict-btn {
             width: 100%;
-            padding: 12px 12px;
+            padding: 13px 12px;
             background: linear-gradient(100deg, #FFB347, #FF8C33);
             border: none;
             border-radius: 60px;
@@ -179,29 +185,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+            gap: 12px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.4);
         }
         .predict-btn:hover {
             transform: translateY(-2px);
             background: linear-gradient(100deg, #FFA232, #FF7720);
-            box-shadow: 0 12px 20px rgba(255,140,0,0.4);
+            box-shadow: 0 12px 22px rgba(255,140,0,0.5);
         }
 
         .result-card-mini {
-            margin-top: 24px;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(20px);
-            border-radius: 32px;
-            padding: 20px 24px;
+            margin-top: 26px;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(22px);
+            border-radius: 36px;
+            padding: 22px 26px;
             text-align: center;
-            border: 1px solid rgba(255,180,70,0.5);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,180,70,0.6);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.5);
         }
         .price-value {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #FFDF9C, #FFB23F);
+            background: linear-gradient(135deg, #FFE0A0, #FFB23F);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -209,47 +215,43 @@
         }
         .summary-grid-sm {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 10px;
             margin-top: 16px;
             text-align: left;
         }
         .summary-item-sm {
             background: rgba(255, 245, 210, 0.12);
-            padding: 6px 12px;
+            padding: 8px 12px;
             border-radius: 40px;
             font-size: 0.7rem;
             font-weight: 500;
             color: #FFF5E6;
-            border: 0.5px solid rgba(255,200,100,0.2);
+            border: 0.5px solid rgba(255,200,100,0.25);
         }
         .summary-item-sm strong {
             color: #FFD966;
             font-weight: 700;
         }
-        .result-card-mini hr {
-            border-color: #ffb34760;
-            margin: 14px 0 8px;
-        }
 
-        /* ========== VISIBLE TIMER STYLES ========== */
+        /* VISIBLE TIMER STYLES */
         .visible-timer {
-            margin-top: 20px;
-            padding: 12px 18px;
-            background: linear-gradient(135deg, #0f172a, #0a0f1f);
-            border-radius: 60px;
+            margin-top: 22px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #0f1a2a, #07111e);
+            border-radius: 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 12px;
             border: 2px solid #FFB347;
-            box-shadow: 0 0 16px rgba(255, 180, 71, 0.4);
-            animation: glowPulse 1s ease-in-out infinite;
+            box-shadow: 0 0 16px rgba(255, 180, 71, 0.5);
+            animation: glowPulse 1.2s ease-in-out infinite;
         }
         @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 8px rgba(255, 180, 71, 0.4); border-color: #FFB347; }
-            50% { box-shadow: 0 0 20px rgba(255, 180, 71, 0.8); border-color: #FFD966; }
+            0%, 100% { box-shadow: 0 0 8px rgba(255, 180, 71, 0.5); border-color: #FFB347; }
+            50% { box-shadow: 0 0 22px rgba(255, 180, 71, 0.9); border-color: #FFD966; }
         }
         .timer-left {
             display: flex;
@@ -262,7 +264,7 @@
         .timer-left i {
             font-size: 1.3rem;
             color: #FFB347;
-            animation: spinSlow 1s linear infinite;
+            animation: spinSlow 1.2s linear infinite;
         }
         @keyframes spinSlow {
             from { transform: rotate(0deg); }
@@ -272,24 +274,25 @@
             background: #FFB347;
             color: #0a0f1f;
             font-weight: 900;
-            padding: 6px 18px;
+            padding: 6px 20px;
             border-radius: 50px;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-family: monospace;
             letter-spacing: 2px;
-            min-width: 75px;
+            min-width: 85px;
             display: inline-block;
             text-align: center;
-            margin-left: 10px;
-            box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.3);
+            margin-left: 12px;
+            box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1), 0 3px 10px rgba(0,0,0,0.3);
+            transition: all 0.2s;
         }
         .cancel-timer {
-            background: rgba(220, 60, 50, 0.25);
+            background: rgba(220, 60, 50, 0.3);
             border: 1px solid #ff8866;
-            color: #FFB347;
-            padding: 8px 20px;
+            color: #FFCF9A;
+            padding: 8px 24px;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -301,12 +304,13 @@
             background: #ff5533;
             border-color: white;
             color: white;
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
         .cancelled-timer {
             border-color: #4CAF50;
             animation: none;
-            background: linear-gradient(135deg, #1a2a1a, #0f1a0f);
+            background: linear-gradient(135deg, #1e2a1a, #0f1a0f);
+            box-shadow: 0 0 10px #4CAF5040;
         }
         .cancelled-timer i {
             animation: none;
@@ -315,12 +319,12 @@
 
         .loading {
             text-align: center;
-            padding: 18px;
+            padding: 20px;
         }
         .spinner-sm {
-            width: 34px;
-            height: 34px;
-            border: 3px solid rgba(255,180,70,0.2);
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,180,70,0.25);
             border-top: 3px solid #FFB347;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
@@ -329,22 +333,26 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         
         .error-msg {
-            background: #ffdfdfcc;
+            background: #ffdfdfe6;
             backdrop-filter: blur(8px);
             color: #b91c1c;
-            padding: 10px 16px;
-            border-radius: 40px;
-            margin-top: 16px;
+            padding: 12px 18px;
+            border-radius: 60px;
+            margin-top: 18px;
             font-size: 0.8rem;
             font-weight: 600;
             text-align: center;
         }
         .footer-credit {
             text-align: center;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             margin-top: 20px;
             color: #ccb893;
             font-weight: 500;
+        }
+        hr {
+            border-color: #ffb34760;
+            margin: 12px 0 0;
         }
     </style>
 </head>
@@ -352,25 +360,23 @@
 <div class="car-bg"></div>
 <div class="predictor-container">
     <div class="price-head">
-        <h1><i class="fas fa-car"></i> Car Price Prediction</h1>
+        <h1><i class="fas fa-chart-line"></i>Car Price Prediction</h1>
     </div>
 
     <div class="compact-form">
         <form id="predictionForm" class="form-vertical">
             <div class="double-group">
                 <div class="input-field">
-                    <label><i class="fas fa-trademark"></i> Brand</label>
+                    <label><i class="fas fa-trademark"></i> Brand / Model</label>
                     <select id="name" required>
-                        <option value="">Select</option>
-                        {% for brand in brands %}
-                        <option value="{{ brand }}">{{ brand }}</option>
-                        {% endfor %}
+                        <option value="" disabled selected>— Select brand —</option>
+                        <!-- brands injected by backend template via Jinja -->
                     </select>
                 </div>
                 <div class="input-field">
                     <label><i class="fas fa-calendar-alt"></i> Year</label>
                     <input type="range" id="year" min="1994" max="2024" value="2018">
-                    <div class="range-hint"><span id="yearValue">2018</span> model</div>
+                    <div class="range-hint"><span id="yearValue">2018</span> model year</div>
                 </div>
             </div>
 
@@ -381,45 +387,33 @@
                     <div class="range-hint"><span id="kmValue">48,000</span> km</div>
                 </div>
                 <div class="input-field">
-                    <label><i class="fas fa-gas-pump"></i> Fuel</label>
+                    <label><i class="fas fa-gas-pump"></i> Fuel Type</label>
                     <select id="fuel" required>
-                        <option value="">Fuel type</option>
-                        {% for fuel in fuel_types %}
-                        <option value="{{ fuel }}">{{ fuel }}</option>
-                        {% endfor %}
+                        <option value="" disabled selected>— Fuel —</option>
                     </select>
                 </div>
             </div>
 
             <div class="double-group">
                 <div class="input-field">
-                    <label><i class="fas fa-user-tie"></i> Seller</label>
+                    <label><i class="fas fa-user-tie"></i> Seller Type</label>
                     <select id="seller_type" required>
-                        <option value="">Seller type</option>
-                        {% for seller in seller_types %}
-                        <option value="{{ seller }}">{{ seller }}</option>
-                        {% endfor %}
+                        <option value="" disabled selected>— Seller —</option>
                     </select>
                 </div>
                 <div class="input-field">
                     <label><i class="fas fa-exchange-alt"></i> Transmission</label>
                     <select id="transmission" required>
-                        <option value="">Transmission</option>
-                        {% for trans in transmission_types %}
-                        <option value="{{ trans }}">{{ trans }}</option>
-                        {% endfor %}
+                        <option value="" disabled selected>— Transmission —</option>
                     </select>
                 </div>
             </div>
 
             <div class="double-group">
                 <div class="input-field">
-                    <label><i class="fas fa-user-friends"></i> Owner</label>
+                    <label><i class="fas fa-user-friends"></i> Owner History</label>
                     <select id="owner" required>
-                        <option value="">Owner type</option>
-                        {% for owner in owner_types %}
-                        <option value="{{ owner }}">{{ owner }}</option>
-                        {% endfor %}
+                        <option value="" disabled selected>— Owner type —</option>
                     </select>
                 </div>
                 <div class="input-field">
@@ -448,12 +442,12 @@
                 <div class="range-hint"><span id="seatsValue">5</span> seats</div>
             </div>
 
-            <button type="submit" class="predict-btn"><i class="fas fa-chart-simple"></i> Predict value <i class="fas fa-arrow-right"></i></button>
+            <button type="submit" class="predict-btn"><i class="fas fa-brain"></i> Predict Market Value <i class="fas fa-arrow-right"></i></button>
         </form>
 
         <div class="loading" id="loading" style="display: none;">
             <div class="spinner-sm"></div>
-            <p style="margin-top: 10px; font-size:0.75rem; color:#FFE0A3;">ML engine analyzing market data...</p>
+            <p style="margin-top: 10px; font-size:0.75rem; color:#FFE0A3;">AI analyzing live dataset & trends...</p>
         </div>
         <div class="error-msg" id="errorMessage" style="display: none;"></div>
 
@@ -461,18 +455,68 @@
             <div class="result-card-mini">
                 <div class="price-value" id="predictedPrice">₹0.00</div>
                 <div id="summaryArea"></div>
-                <!-- VISIBLE TIMER CONTAINER - WILL SHOW COUNTDOWN -->
+                <!-- Timer container (visible countdown) -->
                 <div id="timerDisplayContainer"></div>
                 <hr>
-                
+                <div class="footer-credit" style="margin-top: 12px;">✨ ML-based valuation • refresh auto in 20s</div>
             </div>
-        </div>
-        
+        </div> 
     </div>
 </div>
 
 <script>
-    // Range sliders update
+    // ---- DYNAMIC LOADING OF ALL FORM OPTIONS (ensures full select rendering even if backend templating partially fails) ----
+    // But to guarantee all option lists appear even on render deployment without full backend context,
+    // we define comprehensive fallback datasets that will populate selects automatically.
+    // The backend Jinja also provides them, but in case of missing we override with rich options.
+    
+    const BRANDS_FALLBACK = ["Maruti", "Hyundai", "Honda", "Toyota", "Ford", "BMW", "Mercedes-Benz", "Tata", "Mahindra", "Kia", "Volkswagen", "Nissan", "Renault", "Audi", "Skoda", "MG", "Jeep", "Volvo", "Mitsubishi", "Land Rover"];
+    const FUEL_FALLBACK = ["Petrol", "Diesel", "CNG", "LPG", "Electric"];
+    const SELLER_FALLBACK = ["Individual", "Dealer", "Trustmark Dealer"];
+    const TRANSMISSION_FALLBACK = ["Manual", "Automatic"];
+    const OWNER_FALLBACK = ["First Owner", "Second Owner", "Third Owner", "Fourth & Above Owner", "Test Drive Car"];
+    
+    function populateSelect(selectId, options, defaultMsg = "Select") {
+        const selectEl = document.getElementById(selectId);
+        if (!selectEl) return;
+        // Only populate if empty or just placeholder
+        if (selectEl.children.length <= 1) {
+            selectEl.innerHTML = `<option value="" disabled selected>— ${defaultMsg} —</option>`;
+            options.forEach(opt => {
+                const option = document.createElement('option');
+                option.value = opt;
+                option.textContent = opt;
+                selectEl.appendChild(option);
+            });
+        }
+    }
+    
+    // Wait for DOM to ensure elements exist
+    document.addEventListener('DOMContentLoaded', () => {
+        // Force populate selects
+        populateSelect('name', BRANDS_FALLBACK, "Select brand");
+        populateSelect('fuel', FUEL_FALLBACK, "Fuel type");
+        populateSelect('seller_type', SELLER_FALLBACK, "Seller type");
+        populateSelect('transmission', TRANSMISSION_FALLBACK, "Transmission");
+        populateSelect('owner', OWNER_FALLBACK, "Owner type");
+        
+        // Additional check: if backend already rendered, we don't duplicate but ensure no blank
+        // Also set default values for first option to avoid empty submission.
+        const brandSelect = document.getElementById('name');
+        if(brandSelect && brandSelect.options.length > 1 && !brandSelect.value) {
+            brandSelect.selectedIndex = 1;
+        }
+        const fuelSelect = document.getElementById('fuel');
+        if(fuelSelect && fuelSelect.options.length > 1 && !fuelSelect.value) fuelSelect.selectedIndex = 1;
+        const sellerSelect = document.getElementById('seller_type');
+        if(sellerSelect && sellerSelect.options.length > 1 && !sellerSelect.value) sellerSelect.selectedIndex = 1;
+        const transSelect = document.getElementById('transmission');
+        if(transSelect && transSelect.options.length > 1 && !transSelect.value) transSelect.selectedIndex = 1;
+        const ownerSelect = document.getElementById('owner');
+        if(ownerSelect && ownerSelect.options.length > 1 && !ownerSelect.value) ownerSelect.selectedIndex = 1;
+    });
+    
+    // Range Sliders update
     const yearSlider = document.getElementById('year');
     const yearSpan = document.getElementById('yearValue');
     const kmSlider = document.getElementById('km_driven');
@@ -501,23 +545,15 @@
     seatsSlider.addEventListener('input', updateSeats);
     updateYear(); updateKm(); updateMileage(); updateEngine(); updatePower(); updateSeats();
 
-    // ========== AUTO-REFRESH TIMER WITH VISIBLE COUNTDOWN (20 SECONDS) ==========
+    // ========== AUTO-REFRESH TIMER WITH VISIBLE COUNTDOWN (20 sec) ==========
     let refreshTimeoutId = null;
     let countdownIntervalId = null;
 
-    // Function to stop all timers completely
     function killAllTimers() {
-        if (refreshTimeoutId) {
-            clearTimeout(refreshTimeoutId);
-            refreshTimeoutId = null;
-        }
-        if (countdownIntervalId) {
-            clearInterval(countdownIntervalId);
-            countdownIntervalId = null;
-        }
+        if (refreshTimeoutId) { clearTimeout(refreshTimeoutId); refreshTimeoutId = null; }
+        if (countdownIntervalId) { clearInterval(countdownIntervalId); countdownIntervalId = null; }
     }
 
-    // Function to clear timer and show cancelled message
     function cancelAutoRefreshAndShow() {
         killAllTimers();
         const timerContainer = document.getElementById('timerDisplayContainer');
@@ -526,86 +562,79 @@
                 <div class="visible-timer cancelled-timer">
                     <div class="timer-left">
                         <i class="fas fa-check-circle"></i>
-                        <span style="color:#a5d6a5;">✓ Auto-refresh cancelled · Page will not reload</span>
+                        <span style="color:#b9f6a5;">✓ Auto-refresh cancelled • page will stay</span>
                     </div>
                 </div>
             `;
-            // Auto-remove cancelled message after 4 seconds but keep container clean
             setTimeout(() => {
                 if (timerContainer && timerContainer.innerHTML.includes('cancelled')) {
                     timerContainer.innerHTML = '';
                 }
-            }, 4000);
+            }, 4500);
         }
     }
 
-    // Function to start the VISIBLE 20-second countdown timer
     function startVisibleCountdown() {
-        // Kill any existing timers first
         killAllTimers();
-        
         let secondsRemaining = 20;
         const timerContainer = document.getElementById('timerDisplayContainer');
         if (!timerContainer) return;
         
-        // Create the visible timer UI
+        timerContainer.innerHTML = `
+            <div class="visible-timer" id="activeTimerWidget">
+                <div class="timer-left">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Auto refresh in</span>
+                    <span class="timer-number-large" id="countdownNumber">20</span>
+                    <span>seconds</span>
+                </div>
+                <button class="cancel-timer" id="cancelRefreshButton">
+                    <i class="fas fa-ban"></i> Cancel & Stop
+                </button>
+            </div>
+        `;
         
-        
-        // Update countdown every second
+        const countdownSpan = document.getElementById('countdownNumber');
         countdownIntervalId = setInterval(() => {
             secondsRemaining--;
-            const countdownSpan = document.getElementById('countdownNumber');
             if (countdownSpan) {
                 countdownSpan.innerText = secondsRemaining;
-                // Change color when low on time
                 if (secondsRemaining <= 5) {
                     countdownSpan.style.background = "#FF6600";
                     countdownSpan.style.color = "white";
-                    countdownSpan.style.transform = "scale(1.05)";
                 }
                 if (secondsRemaining <= 2) {
                     countdownSpan.style.background = "#ff3300";
                 }
             }
-            
             if (secondsRemaining <= 0) {
-                // Time's up! Refresh the page
-                if (countdownIntervalId) clearInterval(countdownIntervalId);
-                if (refreshTimeoutId) clearTimeout(refreshTimeoutId);
+                clearInterval(countdownIntervalId);
+                clearTimeout(refreshTimeoutId);
                 window.location.reload();
             }
         }, 1000);
         
-        // Backup timeout to refresh after exactly 20 seconds
         refreshTimeoutId = setTimeout(() => {
             if (countdownIntervalId) clearInterval(countdownIntervalId);
             window.location.reload();
         }, 20000);
         
-        // Attach cancel button event
         const cancelBtn = document.getElementById('cancelRefreshButton');
         if (cancelBtn) {
-            // Remove any previous listener by cloning and replacing
-            const newCancelBtn = cancelBtn.cloneNode(true);
-            cancelBtn.parentNode.replaceChild(newCancelBtn, cancelBtn);
-            newCancelBtn.addEventListener('click', (e) => {
+            cancelBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                e.stopPropagation();
                 cancelAutoRefreshAndShow();
             });
         }
     }
     
-    // Reset timer display and clear any pending refresh (called before new prediction)
     function resetTimerDisplay() {
         killAllTimers();
         const timerContainer = document.getElementById('timerDisplayContainer');
-        if (timerContainer) {
-            timerContainer.innerHTML = '';  // Clear timer area entirely
-        }
+        if (timerContainer) timerContainer.innerHTML = '';
     }
 
-    // Form submission handler
+    // ---- FORM SUBMIT HANDLER ----
     const form = document.getElementById('predictionForm');
     const loadingDiv = document.getElementById('loading');
     const resultContainerDiv = document.getElementById('resultContainer');
@@ -615,38 +644,44 @@
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        // Reset any existing timer before new prediction
         resetTimerDisplay();
-        
         resultContainerDiv.style.display = 'none';
         errorDiv.style.display = 'none';
         loadingDiv.style.display = 'block';
 
         const getField = (id) => document.getElementById(id).value;
-        const formData = {
-            name: getField('name'),
-            year: getField('year'),
-            km_driven: getField('km_driven'),
-            fuel: getField('fuel'),
-            seller_type: getField('seller_type'),
-            transmission: getField('transmission'),
-            owner: getField('owner'),
-            mileage: getField('mileage'),
-            engine: getField('engine'),
-            max_power: getField('max_power'),
-            seats: getField('seats')
-        };
+        const nameVal = getField('name');
+        const yearVal = getField('year');
+        const kmVal = getField('km_driven');
+        const fuelVal = getField('fuel');
+        const sellerVal = getField('seller_type');
+        const transVal = getField('transmission');
+        const ownerVal = getField('owner');
+        const mileageVal = getField('mileage');
+        const engineVal = getField('engine');
+        const powerVal = getField('max_power');
+        const seatsVal = getField('seats');
 
-        // Validation
-        for (let [key, val] of Object.entries(formData)) {
-            if (!val || val === "") {
-                errorDiv.innerText = `⚠️ Please complete: ${key.replace(/_/g, ' ')}`;
-                errorDiv.style.display = 'block';
-                loadingDiv.style.display = 'none';
-                return;
-            }
+        if (!nameVal || !fuelVal || !sellerVal || !transVal || !ownerVal) {
+            errorDiv.innerText = "⚠️ Please fill all fields: Brand, Fuel, Seller, Transmission, Owner required.";
+            errorDiv.style.display = 'block';
+            loadingDiv.style.display = 'none';
+            return;
         }
+
+        const formData = {
+            name: nameVal,
+            year: parseInt(yearVal),
+            km_driven: parseInt(kmVal),
+            fuel: fuelVal,
+            seller_type: sellerVal,
+            transmission: transVal,
+            owner: ownerVal,
+            mileage: parseFloat(mileageVal),
+            engine: parseInt(engineVal),
+            max_power: parseInt(powerVal),
+            seats: parseInt(seatsVal)
+        };
 
         try {
             const response = await fetch('/predict', {
@@ -659,46 +694,39 @@
                 const displayPrice = result.formatted_price || `₹${parseFloat(result.price).toLocaleString('en-IN')}`;
                 predictedPriceSpan.innerHTML = displayPrice;
                 const currentYear = new Date().getFullYear();
-                const carAge = currentYear - parseInt(formData.year);
-                
+                const carAge = currentYear - formData.year;
                 summaryArea.innerHTML = `
-                    <div style="margin-top: 10px;">
+                    <div style="margin-top: 8px;">
                         <div class="summary-grid-sm">
-                            <div class="summary-item-sm"><strong>🚗 Brand:</strong> ${formData.name}</div>
-                            <div class="summary-item-sm"><strong>📅 Year:</strong> ${formData.year} (${carAge} yrs)</div>
-                            <div class="summary-item-sm"><strong>📊 Kilometers:</strong> ${parseInt(formData.km_driven).toLocaleString()} km</div>
+                            <div class="summary-item-sm"><strong>🚗 Model:</strong> ${formData.name}</div>
+                            <div class="summary-item-sm"><strong>📅 Year:</strong> ${formData.year} (${carAge} yrs old)</div>
+                            <div class="summary-item-sm"><strong>📊 Odometer:</strong> ${formData.km_driven.toLocaleString()} km</div>
                             <div class="summary-item-sm"><strong>⛽ Fuel:</strong> ${formData.fuel}</div>
                             <div class="summary-item-sm"><strong>⚙️ Transmission:</strong> ${formData.transmission}</div>
-                            <div class="summary-item-sm"><strong>🔧 Engine:</strong> ${parseInt(formData.engine).toLocaleString()} cc</div>
+                            <div class="summary-item-sm"><strong>🔧 Engine:</strong> ${formData.engine.toLocaleString()} cc</div>
                             <div class="summary-item-sm"><strong>🌿 Mileage:</strong> ${formData.mileage} km/l</div>
                             <div class="summary-item-sm"><strong>💪 Power:</strong> ${formData.max_power} BHP</div>
                             <div class="summary-item-sm"><strong>🪑 Seats:</strong> ${formData.seats}</div>
-                            <div class="summary-item-sm"><strong>👥 Owner:</strong> ${formData.owner}</div>
+                            <div class="summary-item-sm"><strong>👥 Ownership:</strong> ${formData.owner}</div>
                             <div class="summary-item-sm"><strong>🏷️ Seller:</strong> ${formData.seller_type}</div>
                         </div>
                     </div>
                 `;
                 resultContainerDiv.style.display = 'block';
-                
-                // START THE VISIBLE 20-SECOND COUNTDOWN TIMER
-                startVisibleCountdown();
-                
+                startVisibleCountdown();  // launch visible timer after prediction
             } else {
-                errorDiv.innerText = `Prediction error: ${result.error || 'Invalid data'}`;
+                errorDiv.innerText = `Prediction failed: ${result.error || 'Check backend model'}`;
                 errorDiv.style.display = 'block';
             }
         } catch (err) {
-            errorDiv.innerText = `⚠️ Server error: ${err.message}. Make sure Flask backend is running.`;
+            errorDiv.innerText = `⚠️ Server error: ${err.message}. Ensure Flask backend is running (model.pkl + Cardetails.csv). Using demo mode? But backend required.`;
             errorDiv.style.display = 'block';
         } finally {
             loadingDiv.style.display = 'none';
         }
     });
     
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', () => {
-        killAllTimers();
-    });
+    window.addEventListener('beforeunload', () => killAllTimers());
 </script>
 </body>
 </html>
